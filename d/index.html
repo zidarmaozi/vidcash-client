@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tonton Video</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="https://videy.co/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        :root {
+            --plyr-color-main: rgb(236, 14, 14);
+        }
+
+        .video-actions {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* display: none; */
+        }
+
+        .video-actions-inner {
+            width: 100%;
+            max-width: 720px;
+            display: flex;
+            gap: 8px;
+            padding: 12px 12px 6px 12px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            white-space: nowrap;
+        }
+
+        .video-actions-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .action-btn {
+            background: #f2f2f2;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .action-btn,
+        .action-btn a {
+            color: #000;
+        }
+
+        .action-btn:hover {
+            background: #e5e5e5;
+        }
+
+        /* anchor */
+        .stickAd {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            min-height: 70px;
+            max-height: 200px;
+            padding: 5px 5px;
+            box-shadow: 0 -6px 18px 0 rgba(9, 32, 76, .1);
+            transition: all .1s ease-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fefefe;
+            z-index: 50;
+            border-top: 1px solid #eceff1
+        }
+
+        .stickAdclose {
+            width: 40px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px 0 0;
+            border: 1px solid #eceff1;
+            border-bottom: 0;
+            border-right: 0;
+            position: absolute;
+            right: 0;
+            top: -30px;
+            background-color: inherit
+        }
+
+        .stickAdclose svg {
+            width: 18px;
+            height: 18px;
+            fill: none !important;
+            stroke: #48525c;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1
+        }
+
+        .stickAdcontent {
+            flex-grow: 1;
+            overflow: hidden;
+            display: block;
+            position: relative
+        }
+
+        .stickAdin:checked~.stickAd {
+            padding: 0;
+            min-height: 0
+        }
+
+        .stickAdin:checked~.stickAd .stickAdcontent {
+            display: none
+        }
+
+        .stickAdin:checked~.stickAd .stickAdclose svg {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg)
+        }
+
+        .video {
+            position: relative;
+            /* Agar overlay mengikuti ukuran video */
+            display: flex;
+            justify-content: center
+        }
+
+        .video-ads {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            z-index: 10
+        }
+
+        .adsTxt {
+            font-size: 18px;
+            font-family: Arial, sans-serif
+        }
+
+        .adsHeader {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .adsIcon {
+            margin: 7px
+        }
+
+        .adsIcon img {
+            width: 40px;
+            height: 40px
+        }
+
+        .adsButton {
+            background-color: #3b82f6;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px
+        }
+
+        .adsButton:disabled {
+            background-color: #6b7280;
+            cursor: not-allowed
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .earn-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #fff35c;
+            color: #000;
+            font-weight: 600;
+            font-size: small;
+            padding: 5px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-family: sans-serif;
+            transition: background-color 0.2s;
+        }
+
+        .earn-btn img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .earn-btn:hover {
+            background-color: #ffe733;
+            /* sedikit lebih gelap saat hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="logo">
+                <a href="/">videy</a>
+            </div>
+
+            <div class="more">
+                <a href="https://vidcash.cc" class="earn-btn">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEYFowekMNGWcsXTN01x5kOsaqLO6jXsgYF4q_WcW19Xemc8E3k44Fiyjpm2ltruP6LqSQCZ883a3Yit65tCUa8nE1x_e2AF0CqAJ5PS0BYy1st_xbtRnz2ji-VOf0E7Et7htc2BbsVmKUQgsn5ashvujRwksU8d3zuPwpsIDUAW6sZGQ8GEgiz49kx0E/s1600/money1@2x-DPJsf2Dt-1755081131511.png"
+                        alt="Coin" />
+                    Mulai menghasilkan !
+                </a>
+            </div>
+        </div>
+        <div class="video">
+
+            <!-- Overlay untuk Iklan -->
+            <div class="video-inner">
+                <video id="videoPlayer" controls controlsList="nodownload" class="w-full h-full"></video>
+                <div id="video-error" style="display: none;" class="video-error-container">
+                    <div class="video-error">Video could not load.</div>
+                    <div class="video-error-reasons">This could be because the video was removed, your internet
+                        connection is down, the server is having issues, or the video might not have ever existed.</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-actions">
+            <div class="video-actions-inner">
+                <button class="action-btn" id="shareVideo">Share Video</button>
+                <button class="action-btn" id="downloadVideoBtn">Download Video</button>
+                <button class="action-btn" id="reportBtn">Report</button>
+            </div>
+        </div>
+        <div class="as">
+
+        </div>
+        <div class="footer">
+            <div class="copyright"> Copyright &copy; <span id="year"></span> TRUE DOMAIN PRIVACY, LLC </div>
+            <div class="legal">
+                <div class="item">
+                    <a href="/terms-of-service">Terms of Service</a>
+                </div>
+                <div class="item">
+                    <a href="#" id="reportAbuse">Report Abuse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Google tag (gtag.js) -->
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <script type="module" src="watch.js"></script>
+</body>
+
+</html>
