@@ -1,5 +1,5 @@
 // Ganti dengan URL API Laravel Anda yang sudah live
-const LARAVEL_API_URL = 'https://vidcash.test/api';
+const LARAVEL_API_URL = 'https://vidcash.cc/api';
 
 // --- Elemen UI ---
 const videoPlayer = document.getElementById('videoPlayer');
