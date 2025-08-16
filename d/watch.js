@@ -22,17 +22,17 @@ async function getSettings() {
         const settings = await response.json();
 
         // === CONSOLE LOG UNTUK PENGATURAN ===
-        console.log("Pengaturan Diterima dari Server Laravel:", {
-            "Waktu Tonton (detik)": settings.watch_time_seconds,
-            "Pendapatan per View (Rp)": settings.cpm,
-            "Batas View per IP": settings.ip_view_limit,
-            "Level Validasi": settings.default_validation_level
-        });
+        // //console.log("Pengaturan Diterima dari Server Laravel:", {
+        //     "Waktu Tonton (detik)": settings.watch_time_seconds,
+        //     "Pendapatan per View (Rp)": settings.cpm,
+        //     "Batas View per IP": settings.ip_view_limit,
+        //     "Level Validasi": settings.default_validation_level
+        // });
         // ===================================
 
         return settings;
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         return null;
     }
 }
@@ -41,7 +41,7 @@ async function getSettings() {
 async function recordView() {
     if (viewRecorded) return;
     viewRecorded = true;
-    console.log("Mengirim permintaan untuk mencatat view...");
+    // //console.log("Mengirim permintaan untuk mencatat view...");
 
     try {
         const response = await fetch(`${LARAVEL_API_URL}/service/record-view`, {
@@ -56,17 +56,17 @@ async function recordView() {
         const result = await response.json();
 
         // === CONSOLE LOG UNTUK STATUS VIEW ===
-        if (response.ok) {
-            console.log("%cVIEW VALID: Berhasil dicatat oleh server.", "color: green; font-weight: bold;");
-        } else {
-            // Tampilkan detail dari server
-            console.warn(`%cVIEW TIDAK VALID: Server menolak.`, "color: orange; font-weight: bold;");
-            console.log("Detail dari Server:", result.debug);
-        }
+        // if (response.ok) {
+        //     //console.log("%cVIEW VALID: Berhasil dicatat oleh server.", "color: green; font-weight: bold;");
+        // } else {
+        //     // Tampilkan detail dari server
+        //     //console.warn(`%cVIEW TIDAK VALID: Server menolak.`, "color: orange; font-weight: bold;");
+        //     //console.log("Detail dari Server:", result.debug);
+        // }
         // =====================================
 
     } catch (error) {
-        console.error("Gagal mengirim data view:", error);
+        //console.error("Gagal mengirim data view:", error);
     }
 }
 
@@ -90,7 +90,7 @@ async function initializePage() {
     videoPlayer.onplaying = () => {
         if (viewRecorded) return;
         clearTimeout(watchTimer);
-        console.log(`Timer dimulai, view akan dicatat dalam ${requiredWatchTime} detik.`);
+        //console.log(`Timer dimulai, view akan dicatat dalam ${requiredWatchTime} detik.`);
         watchTimer = setTimeout(recordView, requiredWatchTime * 1000);
     };
 
