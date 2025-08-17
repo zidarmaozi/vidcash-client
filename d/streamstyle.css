@@ -1,0 +1,254 @@
+     :root {
+         --plyr-color-main: rgb(236, 14, 14);
+     }
+
+     .video-actions {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         /* display: none; */
+     }
+
+     .video-actions-inner {
+         width: 100%;
+         max-width: 720px;
+         display: flex;
+         gap: 8px;
+         padding: 12px 12px 6px 12px;
+         overflow-x: auto;
+         scrollbar-width: none;
+         -ms-overflow-style: none;
+         white-space: nowrap;
+     }
+
+     .video-actions-inner::-webkit-scrollbar {
+         display: none;
+     }
+
+     .action-btn {
+         background: #f2f2f2;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 16px;
+         font-family: inherit;
+         font-size: 14px;
+         font-weight: 500;
+         cursor: pointer;
+         transition: background-color 0.2s;
+         flex-shrink: 0;
+     }
+
+     .action-btn,
+     .action-btn a {
+         color: #000;
+     }
+
+     .action-btn:hover {
+         background: #e5e5e5;
+     }
+
+     /* anchor */
+     .stickAd {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         width: 100%;
+         min-height: 70px;
+         max-height: 200px;
+         padding: 5px 5px;
+         box-shadow: 0 -6px 18px 0 rgba(9, 32, 76, .1);
+         transition: all .1s ease-in;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: #fefefe;
+         z-index: 50;
+         border-top: 1px solid #eceff1
+     }
+
+     .stickAdclose {
+         width: 40px;
+         height: 30px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 12px 0 0;
+         border: 1px solid #eceff1;
+         border-bottom: 0;
+         border-right: 0;
+         position: absolute;
+         right: 0;
+         top: -30px;
+         background-color: inherit
+     }
+
+     .stickAdclose svg {
+         width: 18px;
+         height: 18px;
+         fill: none !important;
+         stroke: #48525c;
+         stroke-linecap: round;
+         stroke-linejoin: round;
+         stroke-width: 1
+     }
+
+     .stickAdcontent {
+         flex-grow: 1;
+         overflow: hidden;
+         display: block;
+         position: relative
+     }
+
+     .stickAdin:checked~.stickAd {
+         padding: 0;
+         min-height: 0
+     }
+
+     .stickAdin:checked~.stickAd .stickAdcontent {
+         display: none
+     }
+
+     .stickAdin:checked~.stickAd .stickAdclose svg {
+         -webkit-transform: rotate(180deg);
+         transform: rotate(180deg)
+     }
+
+     .video {
+         position: relative;
+         /* Agar overlay mengikuti ukuran video */
+         display: flex;
+         justify-content: center
+     }
+
+     .video-ads {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, .7);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         color: white;
+         text-align: center;
+         backdrop-filter: blur(10px);
+         z-index: 10
+     }
+
+     .adsTxt {
+         font-size: 18px;
+         font-family: Arial, sans-serif
+     }
+
+     .adsHeader {
+         margin-bottom: 10px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .adsIcon {
+         margin: 7px
+     }
+
+     .adsIcon img {
+         width: 40px;
+         height: 40px
+     }
+
+     .adsButton {
+         background-color: #3b82f6;
+         border: none;
+         color: white;
+         padding: 12px 24px;
+         font-size: 16px;
+         border-radius: 20px;
+         cursor: pointer;
+         margin-top: 10px
+     }
+
+     .adsButton:disabled {
+         background-color: #6b7280;
+         cursor: not-allowed
+     }
+
+     .hidden {
+         display: none
+     }
+
+     .earn-btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 4px;
+         background-color: #fff35c;
+         color: #000;
+         font-weight: 600;
+         font-size: small;
+         padding: 5px;
+         border-radius: 9999px;
+         text-decoration: none;
+         font-family: sans-serif;
+         transition: background-color 0.2s;
+     }
+
+     .earn-btn img {
+         width: 28px;
+         height: 28px;
+     }
+
+     .earn-btn:hover {
+         background-color: #ffe733;
+         /* sedikit lebih gelap saat hover */
+     }
+
+     /* video player styles */
+     .plyr.plyr--full-ui.plyr--video.plyr--html5.plyr--fullscreen-enabled.plyr--paused.plyr--stopped.plyr--pip-supported {
+         width: 100%;
+     }
+
+     .joingrup {
+         display: flex;
+         align-items: center;
+         background: #37BBFE;
+         color: rgb(247, 244, 244);
+         margin: 10px;
+         padding: 10px;
+         border-radius: 10px;
+         justify-content: space-around;
+         gap: 14px;
+     }
+
+     .join-icon {
+         background: aliceblue;
+         border-radius: 10px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .joingrup .join-icon svg {
+         width: 48px;
+         height: 48px;
+     }
+
+     a.join-btn {
+         background: aliceblue;
+         color: black;
+         padding: 8px 10px;
+         border-radius: 10px;
+         font-weight: 500;
+         font-size: 14px;
+     }
+
+     .join-btn:hover {
+         opacity: 0.5;
+     }
+
+     .join-text {
+         line-height: 1.5;
+         margin: 0;
+         padding: 0;
+     }
