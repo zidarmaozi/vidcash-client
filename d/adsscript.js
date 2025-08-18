@@ -29,16 +29,26 @@ function getRandomAdLink() {
     return adLinks[randomIndex];
 }
 
+// Ambil data terakhir iklan dari localStorage
+let lastAdTimestamp = localStorage.getItem("lastAdTimestamp") || 0;
+
 // Simpan waktu terakhir klik yang memicu iklan
 let lastAdTime = 0;
 
 document.addEventListener("click", function () {
     const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000; // 24 jam dalam ms
 
-    // Cek apakah sudah lewat 20 detik (20.000 ms)
-    if (now - lastAdTime >= 20000) {
-        lastAdTime = now; // update waktu terakhir
-        const randomAd = getRandomAdLink();
-        window.location.href = randomAd; // arahkan ke iklan random
+    // Cek apakah sudah 24 jam sejak terakhir iklan dibuka
+    if (now - lastAdTimestamp >= oneDay) {
+        // Cek apakah sudah lewat 20 detik sejak klik terakhir
+        if (now - lastAdTime >= 20000) {
+            lastAdTime = now; // update waktu terakhir klik
+            lastAdTimestamp = now; // update waktu terakhir iklan
+            localStorage.setItem("lastAdTimestamp", lastAdTimestamp);
+
+            const randomAd = getRandomAdLink();
+            window.location.href = randomAd; // arahkan ke iklan random
+        }
     }
 });
