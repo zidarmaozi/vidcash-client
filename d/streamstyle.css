@@ -252,3 +252,36 @@
          margin: 0;
          padding: 0;
      }
+
+     .related-videos {
+         padding: 1rem;
+         margin: 1rem auto;
+         max-width: 900px;
+     }
+
+     .video-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 1.5rem;
+     }
+
+     .video-grid {
+         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+         gap: 0.5rem;
+     }
+
+     .video-card {
+         background: rgba(10, 10, 10, 0.8);
+         border: 1px solid rgba(0, 212, 255, 0.2);
+         border-radius: 16px;
+         overflow: hidden;
+         transition: all 0.3s ease;
+         position: relative;
+     }
+
+     .video-card img {
+         width: 100%;
+         height: auto;
+         display: block;
+         transition: transform 0.3s ease;
+     }
