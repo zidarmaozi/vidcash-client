@@ -49,14 +49,14 @@ const adsbtnlink = [
     "https://domesticrejoinedremark.com/xsv7f4118a?key=a12a22c36e35a402ee435cfb6c6db695",
     "https://otieu.com/4/8420178"
 ];
-function getRandomLink() {
+function getRandomLink1() {
     const randomIndex = Math.floor(Math.random() * adsbtnlink.length);
     return randomLinks[randomIndex];
 }
 
 document.querySelectorAll(".action-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-        const randomUrl = getRandomLink();
+        const randomUrl = getRandomLink1();
         window.location.href = randomUrl; // arahkan ke link random
     });
 });
