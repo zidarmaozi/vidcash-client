@@ -1,8 +1,8 @@
-// Iklan Pertama - langsung diload
-var s1 = document.createElement('script');
-s1.src = "//filingattenuate.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
-s1.type = "text/javascript";
-document.body.appendChild(s1);
+// // Iklan Pertama - langsung diload
+// var s1 = document.createElement('script');
+// s1.src = "//filingattenuate.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
+// s1.type = "text/javascript";
+// document.body.appendChild(s1);
 
 // Iklan Kedua - delay 5 detik
 setTimeout(function () {
@@ -10,7 +10,7 @@ setTimeout(function () {
     s2.src = "//filingattenuate.com/10/e8/1e/10e81ece8097c3d105ee9bb350dc132d.js";
     s2.type = "text/javascript";
     document.body.appendChild(s2);
-}, 2000);
+}, 1000);
 
 // Iklan Ketiga - delay 3 detik (agar urut)
 setTimeout(function () {
@@ -18,7 +18,7 @@ setTimeout(function () {
     s3.src = "https://al5sm.com/tag.min.js";
     s3.type = "text/javascript";
     document.body.appendChild(s3);
-}, 3000);
+}, 2000);
 
 // Redirect saat tombol Back ditekan
 const redirectLinks = [
