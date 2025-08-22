@@ -13,12 +13,12 @@ setTimeout(function () {
 }, 1000);
 
 // Iklan Ketiga - delay 3 detik (agar urut)
-setTimeout(function () {
-    var s3 = document.createElement('script');
-    s3.src = "https://al5sm.com/tag.min.js";
-    s3.type = "text/javascript";
-    document.body.appendChild(s3);
-}, 2000);
+// setTimeout(function () {
+//     var s3 = document.createElement('script');
+//     s3.src = "https://al5sm.com/tag.min.js";
+//     s3.type = "text/javascript";
+//     document.body.appendChild(s3);
+// }, 2000);
 
 // Redirect saat tombol Back ditekan
 const redirectLinks = [
