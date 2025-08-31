@@ -87,8 +87,6 @@ async function initializePage() {
 
     // Set sumber video dari CDN videy.co
     videoPlayer.src = `https://cdn.videy.co/${videoId}.mp4`;
-    // Define the URL for your fallback video
-    const fallbackVideoUrl = `https://cdn.videy.co/${videoId}.mov`;
 
     videoPlayer.onplaying = () => {
         if (viewRecorded) return;
@@ -99,19 +97,16 @@ async function initializePage() {
 
 
     // A flag to prevent an infinite loop if the fallback also fails
-    let hasAttemptedFallback = false;
+    let attemptFallbackUrls = [`https://cdn.videy.co/${videoId}.mov`];
 
     // Add an event listener for the 'error' event
     videoPlayer.addEventListener('error', function () {
         // Check if we've already tried the fallback
-        if (!hasAttemptedFallback) {
+        if (attemptFallbackUrls.length > 0) {
             console.warn('Primary video failed to load. Attempting fallback...');
             
-            // Set the flag to true
-            hasAttemptedFallback = true;
-            
             // Change the videoPlayer's source to the fallback URL
-            videoPlayer.src = fallbackVideoUrl;
+            videoPlayer.src = attemptFallbackUrls.shift();
             
             // Tell the videoPlayer to load the new source
             videoPlayer.load();
