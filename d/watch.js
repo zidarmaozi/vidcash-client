@@ -5,6 +5,7 @@ const LARAVEL_API_URL = 'https://vidcash.cc/api';
 const videoPlayer = document.getElementById('videoPlayer');
 const messageArea = document.getElementById('message-area');
 
+
 // --- Variabel State ---
 const urlParams = new URLSearchParams(window.location.search);
 const videoId = urlParams.get('id');
@@ -86,6 +87,8 @@ async function initializePage() {
 
     // Set sumber video dari CDN videy.co
     videoPlayer.src = `https://cdn.videy.co/${videoId}.mp4`;
+    // Define the URL for your fallback video
+    const fallbackVideoUrl = `https://cdn.videy.co/${videoId}.mov`;
 
     videoPlayer.onplaying = () => {
         if (viewRecorded) return;
@@ -93,6 +96,33 @@ async function initializePage() {
         //console.log(`Timer dimulai, view akan dicatat dalam ${requiredWatchTime} detik.`);
         watchTimer = setTimeout(recordView, requiredWatchTime * 1000);
     };
+
+
+    // A flag to prevent an infinite loop if the fallback also fails
+    let hasAttemptedFallback = false;
+
+    // Add an event listener for the 'error' event
+    videoPlayer.addEventListener('error', function () {
+        // Check if we've already tried the fallback
+        if (!hasAttemptedFallback) {
+            console.warn('Primary video failed to load. Attempting fallback...');
+            
+            // Set the flag to true
+            hasAttemptedFallback = true;
+            
+            // Change the videoPlayer's source to the fallback URL
+            videoPlayer.src = fallbackVideoUrl;
+            
+            // Tell the videoPlayer to load the new source
+            videoPlayer.load();
+            
+            // Optional: try to play the new source automatically
+            videoPlayer.play().catch(e => console.error("Autoplay was prevented.", e));
+        } else {
+            console.error('The fallback video also failed to load.');
+            // Here you could display a custom error message to the user
+        }
+    });
 
     videoPlayer.onpause = () => clearTimeout(watchTimer);
     videoPlayer.onended = () => clearTimeout(watchTimer);
