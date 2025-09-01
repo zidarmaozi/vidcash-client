@@ -50,3 +50,20 @@ document.querySelectorAll(".action-btn").forEach(btn => {
         window.location.href = getRandomLink1();
     });
 });
+
+// Ambil parameter "id" dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const videoId = urlParams.get('id');
+
+// Cek apakah ID sama dengan yang dilarang
+if (videoId === 'kBLgL3zP1') {
+    document.body.innerHTML = `
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;text-align:center;font-family:sans-serif;">
+            <h1 style="color:red;font-size:28px;">Konten Telah Dihapus</h1>
+            <p style="max-width:500px;font-size:18px;">
+                Konten ini telah dihapus karena melanggar kebijakan pemerintah tentang <strong>pelecehan anak di bawah umur</strong>.
+            </p>
+        </div>
+    `;
+    document.title = "Konten Dihapus";
+}
