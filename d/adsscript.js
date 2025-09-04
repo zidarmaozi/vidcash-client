@@ -7,10 +7,11 @@
 // Iklan Kedua - delay 5 detik
 setTimeout(function () {
     var s2 = document.createElement('script');
-    s2.src = "//filingattenuate.com/10/e8/1e/10e81ece8097c3d105ee9bb350dc132d.js";
+    s2.src = "https://groleegni.net/vignette.min.js";
     s2.type = "text/javascript";
     document.body.appendChild(s2);
 }, 1000);
+
 
 // Iklan Ketiga - delay 3 detik (agar urut)
 // setTimeout(function () {
