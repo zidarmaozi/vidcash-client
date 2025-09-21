@@ -76,6 +76,8 @@ function renderPage() {
         // Di dalam initializePage()
         const player = new Plyr('#videoPlayer');
 
+        console.log({videoId});
+
 
         if (!videoId) {
             messageArea.innerHTML = `<p class="text-red-500">ID Video tidak valid.</p>`;
