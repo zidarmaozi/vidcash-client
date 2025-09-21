@@ -79,6 +79,10 @@ function renderPage() {
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
+        if (!settings || !settings.is_active) {
+            window.location.replace('/d/removed.html');
+        }
+
         // Set sumber video dari CDN videy.co
         videoPlayer.src = `https://cdn.videy.co/${videoId}.mp4`;
 
