@@ -76,11 +76,6 @@ function renderPage() {
         // Di dalam initializePage()
         const player = new Plyr('#videoPlayer');
 
-        if (!videoId) {
-            messageArea.innerHTML = `<p class="text-red-500">ID Video tidak valid.</p>`;
-            return;
-        }
-
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
