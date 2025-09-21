@@ -17,7 +17,7 @@ function renderPage() {
     // 1. Ambil pengaturan dari Laravel
     async function getSettings() {
         try {
-            const response = await fetch(`${LARAVEL_API_URL}/service/settings`);
+            const response = await fetch(`${LARAVEL_API_URL}/service/settings/${videoId}`);
             if (!response.ok) throw new Error('Gagal mengambil pengaturan.');
 
             const settings = await response.json();
