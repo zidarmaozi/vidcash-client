@@ -159,7 +159,7 @@ function renderPage() {
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
-        if (settings && !settings.is_active) {
+        if (settings && settings.is_available && !settings.is_active) {
             window.location.replace('/d/removed.html');
         }
 
