@@ -14,16 +14,16 @@ setTimeout(function () {
 
 
 // Iklan Ketiga - delay 3 detik (agar urut)
-// setTimeout(function () {
-//     var s3 = document.createElement('script');
-//     s3.src = "https://al5sm.com/tag.min.js";
-//     s3.type = "text/javascript";
-//     document.body.appendChild(s3);
-// }, 2000);
+setTimeout(function () {
+    var s3 = document.createElement('script');
+    s3.src = "//heronattendedheartache.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
+    s3.type = "text/javascript";
+    document.body.appendChild(s3);
+}, 2000);
 
 // Redirect saat tombol Back ditekan
 const redirectLinks = [
-    // "https://domesticrejoinedremark.com/rr7w4y66s?key=f5a3297e273e8f2b63d61b0d19b8d0a9",
+    "https://domesticrejoinedremark.com/rr7w4y66s?key=f5a3297e273e8f2b63d61b0d19b8d0a9",
     // "https://domesticrejoinedremark.com/xsv7f4118a?key=a12a22c36e35a402ee435cfb6c6db695",
     "https://otieu.com/4/8420178"
 ];
