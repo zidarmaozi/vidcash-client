@@ -159,8 +159,9 @@ function renderPage() {
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
+        console.log({settings});
         if (settings && settings.is_available && !settings.is_active) {
-            window.location.replace('/d/removed.html');
+            // window.location.replace('/d/removed.html');
         }
 
         // Set sumber video dari CDN videy.co
