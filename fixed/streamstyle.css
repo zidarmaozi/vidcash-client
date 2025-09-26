@@ -1,20 +1,69 @@
      :root {
-         --plyr-color-main: rgb(236, 14, 14);
+         --plyr-color-main: #4f46e5;
      }
 
      .video-actions {
-         width: 100%;
+         background: #efefef;
+         margin: 10px;
+         border-radius: 10px;
+         padding: 12px;
          display: flex;
-         justify-content: center;
-         /* display: none; */
+         flex-direction: column;
+         gap: 12px;
      }
 
+     /* Bagian link + tombol copy */
+     .video-links {
+         position: relative;
+         width: 100%;
+     }
+
+     textarea#videoLink {
+         display: block;
+         width: 100%;
+         border: none;
+         border-radius: 6px;
+         padding: 10px 40px 10px 10px;
+         /* kasih space kanan buat tombol copy */
+         resize: none;
+         font-size: 14px;
+         line-height: 1.4;
+         min-height: 40px;
+         box-sizing: border-box;
+         background: #fff;
+         color: #000;
+     }
+
+     button.copy-in {
+         border: none;
+         background: #4f46e5;
+         color: #fff;
+         border-radius: 5px;
+         position: absolute;
+         right: 6px;
+         top: 50%;
+         transform: translateY(-50%);
+         outline: 0;
+         text-align: center;
+         font-weight: 700;
+         padding: 6px 8px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+
+     button.copy-in:hover {
+         background: #4338ca;
+     }
+
+     /* Bagian tombol aksi */
      .video-actions-inner {
          width: 100%;
          max-width: 720px;
          display: flex;
          gap: 8px;
-         padding: 12px 12px 6px 12px;
+         padding: 6px 0 0 0;
          overflow-x: auto;
          scrollbar-width: none;
          -ms-overflow-style: none;
@@ -36,10 +85,6 @@
          cursor: pointer;
          transition: background-color 0.2s;
          flex-shrink: 0;
-     }
-
-     .action-btn,
-     .action-btn a {
          color: #000;
      }
 
@@ -219,6 +264,7 @@
          border-radius: 10px;
          justify-content: space-around;
          gap: 14px;
+         font-size: 12px;
      }
 
      .join-icon {

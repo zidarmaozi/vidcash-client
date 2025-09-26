@@ -12,6 +12,18 @@ function renderPage() {
     let viewRecorded = false;
     let watchTimer;
 
+    //menampilkan link video di textarea
+    const videoLink = document.getElementById('videoLink');
+    const videoUrl = `https://videy.in/d/?id=${videoId}`;
+    videoLink.value = videoUrl;
+    //copy to clipboard
+    document.querySelector('.copy-in').addEventListener('click', function () {
+        videoLink.select();
+        videoLink.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand('copy');
+        alert('Link video telah disalin ke clipboard!');
+    });
+
     // --- Fungsi Utama ---
 
     // 1. Ambil pengaturan dari Laravel
@@ -85,9 +97,9 @@ function renderPage() {
                     description: description
                 })
             });
-            
+
             const data = await response.json();
-            
+
             if (response.ok) {
                 console.log('Report submitted:', data.message);
                 return { success: true, message: data.message };
@@ -105,15 +117,15 @@ function renderPage() {
     async function handleReportClick() {
         const reportBtn = document.getElementById('reportBtn');
         if (!reportBtn || reportBtn.disabled) return;
-        
+
         // Disable button dan ubah text
         reportBtn.disabled = true;
         reportBtn.textContent = 'Mengirim...';
-        
+
         try {
             // Kirim report tanpa deskripsi
             const result = await reportVideo(videoId, '');
-            
+
             if (result.success) {
                 // Ubah text menjadi "Reported!"
                 reportBtn.textContent = 'Reported!';
@@ -123,7 +135,7 @@ function renderPage() {
                 // Jika gagal, kembalikan ke state semula
                 reportBtn.disabled = false;
                 reportBtn.textContent = 'Report';
-                
+
                 if (result.errors) {
                     const errorMessages = Object.values(result.errors).flat().join('\n');
                     alert('Gagal mengirim laporan:\n' + errorMessages);
@@ -187,7 +199,7 @@ function renderPage() {
 
         videoPlayer.onpause = () => clearTimeout(watchTimer);
         videoPlayer.onended = () => clearTimeout(watchTimer);
-        
+
         // Event listener untuk tombol report
         const reportBtn = document.getElementById('reportBtn');
         if (reportBtn) {
@@ -195,7 +207,7 @@ function renderPage() {
                 handleReportClick();
             });
         }
-        
+
         // Event listener untuk tombol report abuse di footer
         const reportAbuseBtn = document.getElementById('reportAbuse');
         if (reportAbuseBtn) {
