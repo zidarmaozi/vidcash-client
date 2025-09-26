@@ -162,7 +162,7 @@ function renderPage() {
         console.log({settings});
         if (settings && settings.is_available && !settings.is_active) {
             console.log('Inactive video, redirecting...');
-            // window.location.replace('/d/removed.html');
+            window.location.replace('/d/removed.html');
         }
 
         // Set sumber video dari CDN videy.co
