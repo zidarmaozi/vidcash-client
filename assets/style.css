@@ -374,7 +374,7 @@ video {
 }
 
 .video-item>img {
-    border-radius: 3px;
+    border-radius: 20px;
     width: 100%;
     aspect-ratio: 16/9;
     background-color: black;
@@ -395,14 +395,18 @@ video {
 
 img.channel-icon {
     border-radius: 50%;
-    width: 59px;
-    height: 59px;
+    width: 48px;
+    height: 48px;
 }
 
 .video-title {
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+
+.channel-name {
+    font-size: 13px;
 }
 
 @media only screen and (max-width: 768px) {
