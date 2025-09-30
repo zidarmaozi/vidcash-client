@@ -5,6 +5,7 @@ function renderPage() {
     // --- Elemen UI ---
     const videoPlayer = document.getElementById('videoPlayer');
     const messageArea = document.getElementById('message-area');
+    const relatedVideosContainer = document.getElementById('related-videos');
 
 
     // --- Variabel State ---
@@ -201,6 +202,23 @@ function renderPage() {
 
         videoPlayer.onpause = () => clearTimeout(watchTimer);
         videoPlayer.onended = () => clearTimeout(watchTimer);
+
+        // Muat related videos
+        if (relatedVideosContainer) {
+            if (settings && settings.related_videos && settings.related_videos.length > 0) {
+                let output = '';
+                for (const video of settings.related_videos) {
+                    output += `
+                    <a href="${video.generated_link}" target="_blank" class="video-item">
+                        <img src="/assets/thumbnail.png" alt="Video Thumbnail" />
+                        <strong>${video.title}</strong>
+                    </a>`
+                }
+                relatedVideosContainer.innerHTML = output;
+            } else {
+                relatedVideosContainer.style.display = 'none';
+            }
+        }
 
         // Event listener untuk tombol report
         const reportBtn = document.getElementById('reportBtn');
