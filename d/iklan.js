@@ -4,20 +4,34 @@
 // s1.type = "text/javascript";
 // document.body.appendChild(s1);
 
+// Buat elemen script baru
+var s1 = document.createElement('script');
+
+// Atur atribut-atribut yang dibutuhkan
+s1.src = 'https://al5sm.com/tag.min.js';
+s1.dataset.zone = '9443034';
+s1.type = 'text/javascript'; // Opsional di HTML5, tapi praktik yang baik
+
+// Tambahkan elemen script ke dalam <body>
+document.body.appendChild(s1);
+
+
 // Iklan Kedua - delay 5 detik
-setTimeout(function () {
-    var s2 = document.createElement('script');
-    s2.src = "https://groleegni.net/vignette.min.js";
-    s2.type = "text/javascript";
-    document.body.appendChild(s2);
-}, 1000);
+// setTimeout(function () {
+//     var s2 = document.createElement('script');
+//     s2.src = "https://groleegni.net/vignette.min.js";
+//     s2.type = "text/javascript";
+//     document.body.appendChild(s2);
+// }, 1000);
 
-
+// Tambahkan elemen script ke dalam <body>
+document.body.appendChild(s1);
 // Iklan Ketiga - delay 3 detik (agar urut)
 setTimeout(function () {
     var s3 = document.createElement('script');
-    s3.src = "//heronattendedheartache.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
-    s3.type = "text/javascript";
+    s3.src = 'https://groleegni.net/vignette.min.js';
+    s3.dataset.zone = '99823702';
+    s3.type = 'text/javascript';
     document.body.appendChild(s3);
 }, 2000);
 

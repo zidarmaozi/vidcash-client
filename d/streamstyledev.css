@@ -197,9 +197,78 @@
       transition: background-color 0.2s;
   }
 
+  /* 1. Gaya untuk Overlay (Latar Belakang Gelap) */
+  #sensitive-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(20 20 20 / 31%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(15px);
+      color: #e0e0e0;
+      padding: 15px;
+      box-sizing: border-box;
+  }
+
+  /* 2. Gaya untuk Kotak Pop-up */
+  .popup-content {
+      background-color: rgb(43 43 43 / 48%);
+      padding: 30px 40px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      border: 1px solid #444;
+  }
+
+  .popup-content svg {
+      margin-bottom: 1rem;
+      color: #999;
+  }
+
+  .popup-content h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #fff;
+  }
+
+  .popup-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+  }
+
+  /* 3. Gaya untuk Tombol Konfirmasi */
+  #confirm-button {
+      background-color: #f0f0f0;
+      color: #111;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+  }
+
+  #confirm-button:hover {
+      background-color: #fff;
+  }
+
+
   /* Responsive css */
   @media screen and (min-width: 900px) {
       .video {
           margin: auto;
+      }
+  }
+
+  @media screen and (max-width: 600px) {
+      .action-btn {
+          font-size: 11px;
       }
   }
