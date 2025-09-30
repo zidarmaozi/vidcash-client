@@ -391,6 +391,7 @@ video {
     display: flex;
     gap: 13px;
     align-items: center;
+    margin-top: 10px;
 }
 
 img.channel-icon {
