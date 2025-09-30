@@ -54,7 +54,7 @@ function renderPage() {
     // 1. Ambil pengaturan dari Laravel
     async function getRelatedVideos() {
         try {
-            const response = await fetch(`${LARAVEL_API_URL}/service/related-videos`);
+            const response = await fetch(`${LARAVEL_API_URL}/service/related-videos/${videoId}`);
             if (!response.ok) throw new Error('Gagal mengambil video terkait.');
 
             const videos = await response.json();
