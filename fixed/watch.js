@@ -51,6 +51,20 @@ function renderPage() {
         }
     }
 
+    // 1. Ambil pengaturan dari Laravel
+    async function getRelatedVideos() {
+        try {
+            const response = await fetch(`${LARAVEL_API_URL}/service/related-videos`);
+            if (!response.ok) throw new Error('Gagal mengambil video terkait.');
+
+            const videos = await response.json();
+            return videos;
+        } catch (error) {
+            //console.error(error);
+            return null;
+        }
+    }
+
     // 2. Kirim permintaan untuk mencatat view ke Laravel
     async function recordView() {
         if (viewRecorded) return;
@@ -160,7 +174,7 @@ function renderPage() {
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
-        console.log({settings});
+        console.log({ settings });
         if (settings && settings.is_available && !settings.is_active) {
             console.log('Inactive video, redirecting...');
             window.location.replace('/d/removed.html');
@@ -203,23 +217,6 @@ function renderPage() {
         videoPlayer.onpause = () => clearTimeout(watchTimer);
         videoPlayer.onended = () => clearTimeout(watchTimer);
 
-        // Muat related videos
-        if (relatedVideosContainer) {
-            if (settings && settings.related_videos && settings.related_videos.length > 0) {
-                let output = '';
-                for (const video of settings.related_videos) {
-                    output += `
-                    <a href="${video.generated_link}" target="_blank" class="video-item">
-                        <img src="/assets/thumbnail.png" alt="Video Thumbnail" />
-                        <strong>${video.title}</strong>
-                    </a>`
-                }
-                relatedVideosContainer.innerHTML = output;
-            } else {
-                relatedVideosContainer.style.display = 'none';
-            }
-        }
-
         // Event listener untuk tombol report
         const reportBtn = document.getElementById('reportBtn');
         if (reportBtn) {
@@ -235,6 +232,25 @@ function renderPage() {
                 e.preventDefault();
                 handleReportClick();
             });
+        }
+
+        // Ambil dan tampilkan video terkait
+        const relatedVideos = await getRelatedVideos();
+        if (relatedVideos && relatedVideos.length > 0 && relatedVideosContainer) {
+            // Muat related videos
+            if (settings && settings.related_videos && settings.related_videos.length > 0) {
+                let output = '';
+                for (const video of settings.related_videos) {
+                    output += `
+                    <a href="${video.generated_link}" target="_blank" class="video-item">
+                        <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
+                        <strong>${video.title}</strong>
+                    </a>`
+                }
+                relatedVideosContainer.innerHTML = output;
+            } else {
+                relatedVideosContainer.style.display = 'none';
+            }
         }
     }
 
