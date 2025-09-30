@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     }
 
-    // 4. Periksa status di localStorage saat halaman dibuka
-    const isConfirmed = localStorage.getItem(storageKey);
+    // // 4. Periksa status di localStorage saat halaman dibuka
+    // const isConfirmed = localStorage.getItem(storageKey);
 
-    if (isConfirmed === 'true') {
-        showMainContent();
-        // BARU: Langsung muat script iklan jika pengguna sudah pernah konfirmasi
-        loadAdsScript();
-    } else {
-        overlay.style.display = 'flex';
-    }
+    // if (isConfirmed === 'true') {
+    //     showMainContent();
+    //     // BARU: Langsung muat script iklan jika pengguna sudah pernah konfirmasi
+    //     loadAdsScript();
+    // } else {
+    //     overlay.style.display = 'flex';
+    // }
 
     // 5. Tambahkan event listener pada tombol konfirmasi
     confirmButton.addEventListener('click', function () {
