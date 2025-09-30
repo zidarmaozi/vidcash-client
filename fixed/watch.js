@@ -242,7 +242,7 @@ function renderPage() {
             for (const video of relatedVideos) {
                 output += `
                     <a href="${video.generated_link}" target="_blank" class="video-item">
-                        <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
+                        <img src="${video.thumbnail_url}" alt="Video Thumbnail" loading="lazy" />
                         <strong>${video.title}</strong>
                     </a>`
             }
