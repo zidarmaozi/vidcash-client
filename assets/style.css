@@ -365,18 +365,12 @@ video {
 }
 
 .video-item {
-    width: 100%;
+    width: auto !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 16px;
     cursor: pointer;
-}
-
-@media (min-width: 600px) {
-    .video-item {
-        width: 45%;
-    }
 }
 
 .video-item > img {
@@ -390,6 +384,12 @@ video {
     margin-top: 8px;
     font-size: 14px;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .video-item {
+        width: auto;
+    }
 }
 
 @media (max-width: 992px) {
