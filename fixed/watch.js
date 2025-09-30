@@ -239,7 +239,7 @@ function renderPage() {
         if (relatedVideos && relatedVideos.length > 0 && relatedVideosContainer) {
             // Muat related videos
             let output = '';
-            for (const video of relatedVideos.related_videos) {
+            for (const video of relatedVideos) {
                 output += `
                     <a href="${video.generated_link}" target="_blank" class="video-item">
                         <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
