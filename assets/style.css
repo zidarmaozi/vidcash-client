@@ -373,6 +373,12 @@ video {
     cursor: pointer;
 }
 
+@media (min-width: 600px) {
+    .video-item {
+        width: 45%;
+    }
+}
+
 .video-item > img {
     border-radius: 3px;
     width: 100%;
