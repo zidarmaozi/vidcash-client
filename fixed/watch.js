@@ -243,7 +243,13 @@ function renderPage() {
                 output += `
                     <a href="${video.generated_link}" target="_blank" class="video-item">
                         <img src="${video.thumbnail_url}" alt="Video Thumbnail" loading="lazy" />
+                        <div class="video-details">
+                        <img class="channel-icon" src="https://videy.co/favicon.ico" alt="Channel Icon" loading="lazy" />
+                        <div class="video-title">
                         <strong>${video.title}</strong>
+                        <div class="channel-name">Vidcash User</div>
+                        </div>
+                        </div>
                     </a>`
             }
             relatedVideosContainer.innerHTML = output;

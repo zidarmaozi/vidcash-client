@@ -368,12 +368,12 @@ video {
     width: auto !important;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     margin: 16px;
     cursor: pointer;
 }
 
-.video-item > img {
+.video-item>img {
     border-radius: 3px;
     width: 100%;
     aspect-ratio: 16/9;
@@ -381,10 +381,28 @@ video {
     object-fit: contain;
 }
 
-.video-item > strong {
+.video-item>strong {
     margin-top: 8px;
     font-size: 14px;
-    text-align: center;
+    /* text-align: center; */
+}
+
+.video-details {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+}
+
+img.channel-icon {
+    border-radius: 50%;
+    width: 59px;
+    height: 59px;
+}
+
+.video-title {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 @media only screen and (max-width: 768px) {
