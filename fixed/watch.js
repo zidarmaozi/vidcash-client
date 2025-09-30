@@ -238,19 +238,17 @@ function renderPage() {
         const relatedVideos = await getRelatedVideos();
         if (relatedVideos && relatedVideos.length > 0 && relatedVideosContainer) {
             // Muat related videos
-            if (settings && settings.related_videos && settings.related_videos.length > 0) {
-                let output = '';
-                for (const video of settings.related_videos) {
-                    output += `
+            let output = '';
+            for (const video of relatedVideos.related_videos) {
+                output += `
                     <a href="${video.generated_link}" target="_blank" class="video-item">
                         <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
                         <strong>${video.title}</strong>
                     </a>`
-                }
-                relatedVideosContainer.innerHTML = output;
-            } else {
-                relatedVideosContainer.style.display = 'none';
             }
+            relatedVideosContainer.innerHTML = output;
+        } else {
+            relatedVideosContainer.style.display = 'none';
         }
     }
 
