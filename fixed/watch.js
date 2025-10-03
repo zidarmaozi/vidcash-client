@@ -77,6 +77,7 @@ function renderPage() {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
+                    ...xH
                 },
                 body: JSON.stringify({ video_code: videoId })
             });
