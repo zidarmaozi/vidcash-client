@@ -168,6 +168,10 @@ body.dragging::before {
     justify-content: center;
 }
 
+#video-title {
+    text-align: center;
+}
+
 video {
     border-radius: 8px;
     max-height: calc(100vh - 64px);

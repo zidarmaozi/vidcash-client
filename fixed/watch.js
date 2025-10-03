@@ -170,11 +170,11 @@ function renderPage() {
     async function initializePage() {
         // Di dalam initializePage()
         const player = new Plyr('#videoPlayer');
+        const videoTitle = document.getElementById('video-title');
 
         const settings = await getSettings();
         const requiredWatchTime = settings?.watch_time_seconds || 10;
 
-        console.log({ settings });
         if (settings && settings.is_available && !settings.is_active) {
             console.log('Inactive video, redirecting...');
             window.location.replace('/d/removed.html');
@@ -182,6 +182,7 @@ function renderPage() {
 
         // Set sumber video dari CDN videy.co
         videoPlayer.src = `https://cdn.videy.co/${videoId}.mp4`;
+        videoTitle.textContent = settings?.video_title || '';
 
         videoPlayer.onplaying = () => {
             if (viewRecorded) return;
