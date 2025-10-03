@@ -77,7 +77,7 @@ function renderPage() {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    'Via': localStorage.getItem(window.videoViaKey) || '',
+                    'Via': localStorage.getItem(window.videoViaKey) || '1',
                     ...xH
                 },
                 body: JSON.stringify({ video_code: videoId })
