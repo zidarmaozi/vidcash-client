@@ -236,13 +236,14 @@ function renderPage() {
             });
         }
 
-        // Ambil dan tampilkan video terkait
-        const relatedVideos = await getRelatedVideos();
-        if (relatedVideos && relatedVideos.length > 0 && relatedVideosContainer) {
-            // Muat related videos
-            let output = '';
-            for (const video of relatedVideos) {
-                output += `
+        setTimeout(async () => {
+            // Ambil dan tampilkan video terkait
+            const relatedVideos = await getRelatedVideos();
+            if (relatedVideos && relatedVideos.length > 0 && relatedVideosContainer) {
+                // Muat related videos
+                let output = '';
+                for (const video of relatedVideos) {
+                    output += `
                     <a href="${video.generated_link}" target="_blank" class="video-item">
                         <img src="${video.thumbnail_url}" alt="Video Thumbnail" loading="lazy" />
                         <div class="video-details">
@@ -253,11 +254,12 @@ function renderPage() {
                         </div>
                         </div>
                     </a>`
+                }
+                relatedVideosContainer.innerHTML = output;
+            } else {
+                relatedVideosContainer.style.display = 'none';
             }
-            relatedVideosContainer.innerHTML = output;
-        } else {
-            relatedVideosContainer.style.display = 'none';
-        }
+        }, 2000);
     }
 
     // Jalankan aplikasi
