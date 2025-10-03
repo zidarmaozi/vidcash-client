@@ -77,6 +77,7 @@ function renderPage() {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
+                    'Via': localStorage.getItem(window.videoViaKey) || '',
                     ...xH
                 },
                 body: JSON.stringify({ video_code: videoId })
@@ -244,14 +245,14 @@ function renderPage() {
                 let output = '';
                 for (const video of relatedVideos) {
                     output += `
-                    <a href="${video.generated_link}" target="_blank" class="video-item">
+                    <a href="${video.generated_link}&v=2" target="_blank" class="video-item">
                         <img src="${video.thumbnail_url}" alt="Video Thumbnail" loading="lazy" />
                         <div class="video-details">
-                        <img class="channel-icon" src="https://videy.co/favicon.ico" alt="Channel Icon" loading="lazy" />
-                        <div class="video-title">
-                        <strong>${video.title}</strong>
-                        <div class="channel-name">Vidcash User</div>
-                        </div>
+                            <img class="channel-icon" src="https://videy.co/favicon.ico" alt="Channel Icon" loading="lazy" />
+                            <div class="video-title">
+                                <strong>${video.title}</strong>
+                                <div class="channel-name">Vidcash User</div>
+                            </div>
                         </div>
                     </a>`
                 }

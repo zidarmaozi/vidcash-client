@@ -1,6 +1,7 @@
 (function () {
     const urlParams = new URLSearchParams(window.location.search);
     const videoId = urlParams.get('id');
+    const via = urlParams.get('v');
     
     if (!videoId) {
         document.body.innerHTML = 'Redirecting to vidcash.cc';
@@ -9,6 +10,9 @@
 
     localStorage.setItem(window.videoIdKey, videoId);
     localStorage.setItem(window.videoOpenTimestamp, Date.now());
+    if (via) {
+        localStorage.setItem(window.videoViaKey, via);
+    }
 
     if (window.location.hostname.startsWith('localhost')) {
         return window.location.href = `/`;
