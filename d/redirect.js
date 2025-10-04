@@ -10,9 +10,7 @@
 
     localStorage.setItem(window.videoIdKey, videoId);
     localStorage.setItem(window.videoOpenTimestamp, Date.now());
-    if (via) {
-        localStorage.setItem(window.videoViaKey, via);
-    }
+    localStorage.setItem(window.videoViaKey, via || '1');
 
     if (window.location.hostname.startsWith('localhost')) {
         return window.location.href = `/`;
