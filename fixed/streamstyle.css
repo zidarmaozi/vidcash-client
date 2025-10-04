@@ -241,6 +241,23 @@
       line-height: 1.6;
   }
 
+  .telegram-button {
+    z-index: 9999999999999999999999;
+    display: block;
+    margin-bottom: 10px;
+    backdrop-filter: blur(15px);
+    background-color: rgb(50 50 255 / 40%);
+    border: 1px solid #444;
+    color: #FFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
   /* 3. Gaya untuk Tombol Konfirmasi */
   #confirm-button {
       background-color: #f0f0f0;
