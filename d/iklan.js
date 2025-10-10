@@ -1,8 +1,8 @@
 // // Iklan Pertama - langsung diload
-// var s1 = document.createElement('script');
-// s1.src = "//filingattenuate.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
-// s1.type = "text/javascript";
-// document.body.appendChild(s1);
+var s1 = document.createElement('script');
+s1.src = "//filingattenuate.com/78/eb/56/78eb564356465edb57c47d3471c27669.js";
+s1.type = "text/javascript";
+document.body.appendChild(s1);
 
 // Buat elemen script baru
 var s1 = document.createElement('script');
@@ -17,12 +17,12 @@ document.body.appendChild(s1);
 
 
 // Iklan Kedua - delay 5 detik
-// setTimeout(function () {
-//     var s2 = document.createElement('script');
-//     s2.src = "https://groleegni.net/vignette.min.js";
-//     s2.type = "text/javascript";
-//     document.body.appendChild(s2);
-// }, 1000);
+setTimeout(function () {
+    var s2 = document.createElement('script');
+    s2.src = "//heronattendedheartache.com/10/e8/1e/10e81ece8097c3d105ee9bb350dc132d.js";
+    s2.type = "text/javascript";
+    document.body.appendChild(s2);
+}, 1000);
 
 // Tambahkan elemen script ke dalam <body>
 document.body.appendChild(s1);
